@@ -1,25 +1,36 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
+import {RouterProvider,  DataRouter, createBrowserRouter } from "react-router";
+
+import AppLayout from './components/AppLayout/AppLayout';
+import Home from './components/Home/Home';
+import Favorites from './components/Favorites/Favorites';
+import Analytics from './components/Analytics/Analytics';
+
 function App() {
+  const browserRouter: DataRouter = createBrowserRouter([
+    {
+        element: <AppLayout />,
+        children: [
+          {
+              path: "/",
+              element: <Home />,
+          },
+          {
+              path: "favorites",
+              element: <Favorites />,
+          },
+          {
+              path: "analytics",
+              element: <Analytics />,
+          }
+        ],
+    },
+  ]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <RouterProvider router = { browserRouter }/>
   );
 }
 

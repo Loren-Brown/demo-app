@@ -1,4 +1,4 @@
-# Use the latest LTS version of Node.js
+# Use the latest LTS version of Node.js image
 FROM node:latest
  
 # Set the working directory inside the container

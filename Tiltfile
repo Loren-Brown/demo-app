@@ -22,7 +22,8 @@ warn('ℹ️ Open {tiltfile_path} in your favorite editor to get started.'.forma
     tiltfile_path=config.main_path))
 
 
-
+# yarn install locally before building images
+local('(cd demo-react-app; yarn install)')
 
 # Compose mysql databse Docker image
 docker_compose('./tilt/mysql/docker-compose.yml')
